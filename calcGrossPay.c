@@ -10,8 +10,8 @@
 //
 // Parameters:
 //
-//   employeeData - array of employees (i.e., struct employee)
-//   size - the array size (i.e., number of employees)
+//   emp_ptr     - pointer to an employee struct array
+//   size        - number of employees
 //
 // Returns: void
 //

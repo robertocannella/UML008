@@ -66,7 +66,7 @@ int main ()
     calcGrossPay (emp_ptr, NUM_EMPL);
 
     // Calculate the state tax                                       
-    calcStateTax (emp, NUM_EMPL);
+    calcStateTax (emp_ptr, NUM_EMPL);
 
     // Calculate the federal tax                                                   
     calcFedTax (emp, NUM_EMPL);

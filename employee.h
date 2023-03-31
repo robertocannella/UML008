@@ -109,7 +109,7 @@ void calcOvertimeHrs (struct employee * emp_ptr, int size);
 void calcGrossPay (struct employee * emp_ptr, int size);
 void printHeader (void);
 void printEmp (struct employee employeeData[], int size);
-void calcStateTax (struct employee employeeData[], int size);
+void calcStateTax (struct employee * emp_ptr, int size);
 void calcFedTax (struct employee employeeData[], int size);
 void calcNetPay (struct employee employeeData[], int size);
 void calcEmployeeTotals (struct employee * emp_ptr,

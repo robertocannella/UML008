@@ -14,14 +14,14 @@
 //
 // Parameters:
 //
-//   employeeData - array of employees (i.e., struct employee)
-//   size - the array size (i.e., number of employees)
+//   emp_ptr     - pointer to an employee struct array
+//   size        - number of employees
 //
 // Returns: void
 //
 //**************************************************************
 
-void calcStateTax (struct employee employeeData[], int size)
+void calcStateTax (struct employee * emp_ptr, int size)
 {
 	
 	int i; // loop and array index
@@ -30,23 +30,25 @@ void calcStateTax (struct employee employeeData[], int size)
 	for (i=0; i < size; ++i)
     {
         // Make sure tax state is all uppercase
-        if (islower(employeeData[i].taxState[0]))
-            toupper(employeeData[i].taxState[0]); // make upper case
-        if (islower(employeeData[i].taxState[1]))
-            toupper(employeeData[i].taxState[1]); // make upper case
+        if (islower(emp_ptr->taxState[0]))
+            toupper(emp_ptr->taxState[0]); // make upper case
+        if (islower(emp_ptr->taxState[1]))
+            toupper(emp_ptr->taxState[1]); // make upper case
 	    
         // calculate state tax based on where employee resides
-        if (strcmp(employeeData[i].taxState, "MA") == 0)
-            employeeData[i].stateTax = employeeData[i].grossPay * MA_TAX_RATE;
-        else if (strcmp(employeeData[i].taxState, "NH") == 0)
-            employeeData[i].stateTax = employeeData[i].grossPay * NH_TAX_RATE;
-        else if (strcmp(employeeData[i].taxState, "VT") == 0)
-            employeeData[i].stateTax = employeeData[i].grossPay * VT_TAX_RATE;
-        else if (strcmp(employeeData[i].taxState, "CA") == 0)
-           employeeData[i].stateTax = employeeData[i].grossPay * CA_TAX_RATE;
+        if (strcmp(emp_ptr->taxState, "MA") == 0)
+            emp_ptr->stateTax = emp_ptr->grossPay * MA_TAX_RATE;
+        else if (strcmp(emp_ptr->taxState, "NH") == 0)
+            emp_ptr->stateTax = emp_ptr->grossPay * NH_TAX_RATE;
+        else if (strcmp(emp_ptr->taxState, "VT") == 0)
+            emp_ptr->stateTax = emp_ptr->grossPay * VT_TAX_RATE;
+        else if (strcmp(emp_ptr->taxState, "CA") == 0)
+           emp_ptr->stateTax = emp_ptr->grossPay * CA_TAX_RATE;
         else
             // any other state is the default rate
-            employeeData[i].stateTax = employeeData[i].grossPay * DEFAULT_TAX_RATE;
+            emp_ptr->stateTax = emp_ptr->grossPay * DEFAULT_TAX_RATE;
+
+        ++emp_ptr;
     } // for
 	   
 } // calcStateTax
