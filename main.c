@@ -48,10 +48,13 @@ int main ()
     // set up structure to store min and max values and initialize all to zero
     struct min_max employeeMinMax = {0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     struct min_max * empMinMax_ptr;
-    empMinMax_ptr = & employeeMinMax;
+    empMinMax_ptr = &employeeMinMax;
 
     // set up structure to store standard deviation values and initialize all to zero
     struct std_dev employeeStdDev = {0,0,0,0,0,0,0};
+    struct std_dev * empStdDev_ptr;
+    empStdDev_ptr = &employeeStdDev;
+
 
     // set up structure to store median values and initialize all to zero
     struct median employeeMedian = {0,0,0,0,0,0,0};
@@ -85,7 +88,7 @@ int main ()
 
     // Keep a running update of the standard deviation totals
     // Note:  This remains a Call by Value design
-    employeeStdDev = getSD(emp, employeeStdDev, NUM_EMPL);
+    calcSD(emp_ptr, empStdDev_ptr, NUM_EMPL);
 
     // Keep a running update of the standard deviation totals
     // Note:  This remains a Call by Value design

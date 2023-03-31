@@ -67,69 +67,81 @@ struct median getMedian(struct employee employeeData[], struct median median, in
     return median;
 }
 //*************************************************************
-// Function: getSD
+// Function: calcSD
 //
 // Purpose: Calculate the standard deviation of various inputs. Populates
 //          a std_dev struct using the stored employee data
 //
 // Parameters:
 //
-//   employeeData   - array of employees (i.e., struct employee)
-//   stdDev         - struct which stores various standard deviation values
-//   size           - the array size (i.e., number of employees)
+//   emp_ptr     - pointer to an employee struct array
+//   size        - number of employees
+//   stdDev      - pointer to a std_dev struct
 //
-// Returns: median  - a struct containing the calculated median values
+// Returns: Void
 //
 //**************************************************************
-struct std_dev getSD(struct employee employeeData[], struct std_dev stdDev, int size) {
+void calcSD(struct employee * emp_ptr, struct std_dev * empStdDev_ptr, int size) {
 
-    float total[5];
+    float total[size];
     int i;
 
 
     // Calculate Std Dev for net pay
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].netPay;
+        total[i] = emp_ptr->netPay;
+        ++emp_ptr;
     }
-    stdDev.std_dev_netPay =  calculateSD(total, size);
+    empStdDev_ptr->std_dev_netPay =  calculateSD(total, size);
 
+    emp_ptr -= size;
     // Calculate Std Dev for federal tax
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].fedTax;
+        total[i] = emp_ptr->fedTax;
+        ++emp_ptr;
     }
-    stdDev.std_dev_fedTax =  calculateSD(total, size);
+    empStdDev_ptr->std_dev_fedTax =  calculateSD(total, size);
 
+    emp_ptr -= size;
     // Calculate Std Dev for state tax
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].stateTax;
+        total[i] = emp_ptr->stateTax;
+        ++emp_ptr;
     }
-    stdDev.std_dev_stateTax =  calculateSD(total, size);
+    empStdDev_ptr->std_dev_stateTax =  calculateSD(total, size);
 
+    emp_ptr -= size;
     // Calculate Std Dev for gross pay
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].grossPay;
+        total[i] = emp_ptr->grossPay;
+        ++emp_ptr;
     }
-    stdDev.std_dev_grossPay =  calculateSD(total, size);
+    empStdDev_ptr->std_dev_grossPay =  calculateSD(total, size);
 
+    emp_ptr -= size;
     // Calculate Std Dev for overtime hours
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].overtimeHrs;
+        total[i] = emp_ptr->overtimeHrs;
+        ++emp_ptr;
     }
-    stdDev.std_dev_overtimeHrs =  calculateSD(total, size);
+    empStdDev_ptr->std_dev_overtimeHrs =  calculateSD(total, size);
 
+    emp_ptr -= size;
     // Calculate Std Dev for hours
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].hours;
+        total[i] = emp_ptr->hours;
+        ++emp_ptr;
     }
-    stdDev.std_dev_hours =  calculateSD(total, size);
+    empStdDev_ptr->std_dev_hours =  calculateSD(total, size);
 
+    emp_ptr -= size;
     // Calculate Std Dev for hours
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].wageRate;
+        total[i] = emp_ptr->wageRate;
+        ++emp_ptr;
     }
-    stdDev.std_dev_wageRate =  calculateSD(total, size);
+    empStdDev_ptr->std_dev_wageRate =  calculateSD(total, size);
 
-    return stdDev;
 }
 
 // Utility Functions
