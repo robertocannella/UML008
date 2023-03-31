@@ -104,22 +104,20 @@ struct median
 };
 
 // define prototypes here for each function except main
-void getHours (struct employee * emp_ptr, int size);
-void calcOvertimeHrs (struct employee * emp_ptr, int size);
-void calcGrossPay (struct employee * emp_ptr, int size);
-void printHeader (void);
-void printEmp (struct employee employeeData[], int size);
-void calcStateTax (struct employee * emp_ptr, int size);
-void calcFedTax (struct employee * emp_ptr, int size);
-void calcNetPay (struct employee employeeData[], int size);
 void calcEmployeeTotals (struct employee * emp_ptr,
-                                  struct totals * tot_ptr,
-                                  int size);
-                                 
+                         struct totals * tot_ptr,
+                         int size);
 struct min_max calcEmployeeMinMax (struct employee employeeData[],
                                    struct min_max employeeMinMax,
                                    int size);
-                                  
+void calcGrossPay (struct employee * emp_ptr, int size);
+void calcFedTax (struct employee * emp_ptr, int size);
+void calcOvertimeHrs (struct employee * emp_ptr, int size);
+void calcNetPay (struct employee * emp_ptr, int size);
+void calcStateTax (struct employee * emp_ptr, int size);
+void getHours (struct employee * emp_ptr, int size);
+void printHeader (void);
+void printEmp (struct employee employeeData[], int size);
 void printEmpStatistics (struct totals employeeTotals,
                          struct min_max employeeMinMax,
                          struct std_dev employeeStdDev,

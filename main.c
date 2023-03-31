@@ -72,7 +72,7 @@ int main ()
     calcFedTax (emp_ptr, NUM_EMPL);
  
     // Calculate the net pay after taxes   
-    calcNetPay (emp, NUM_EMPL);
+    calcNetPay (emp_ptr, NUM_EMPL);
         
     // Keep a running sum of the employee totals
     calcEmployeeTotals (emp_ptr, tot_ptr, NUM_EMPL);

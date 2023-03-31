@@ -10,14 +10,14 @@
 //
 // Parameters:
 //
-//   employeeData - array of employees (i.e., struct employee)
-//   size - the array size (i.e., number of employees)
+//   emp_ptr     - pointer to an employee struct array
+//   size        - number of employees
 //
 // Returns: void
 //
 //**************************************************************
 
-void calcNetPay (struct employee employeeData[], int size)
+void calcNetPay (struct employee * emp_ptr, int size)
 {
 	int i;               // loop and array index
 	float theTotalTaxes; // the total state and federal tax
@@ -26,11 +26,12 @@ void calcNetPay (struct employee employeeData[], int size)
     for (i=0; i < size; ++i)
     {
         // calculate the total state and federal taxes
-        theTotalTaxes = employeeData[i].stateTax + employeeData[i].fedTax;
+        theTotalTaxes = emp_ptr->stateTax + emp_ptr->fedTax;
 	
         // calculate the net pay
-        employeeData[i].netPay = employeeData[i].grossPay - theTotalTaxes;
+        emp_ptr->netPay =  emp_ptr->grossPay - theTotalTaxes;
 
+        ++emp_ptr;
     } // for
 	
 } // calcNetPay
