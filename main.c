@@ -60,7 +60,7 @@ int main ()
     getHours (emp_ptr, NUM_EMPL);
 
     // Calculate the overtime hours
-    calcOvertimeHrs (emp, NUM_EMPL);
+    calcOvertimeHrs (emp_ptr, NUM_EMPL);
        
     // Calculate the weekly gross pay
     calcGrossPay (emp, NUM_EMPL);

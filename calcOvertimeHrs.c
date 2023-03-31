@@ -9,14 +9,14 @@
 //
 // Parameters:
 //
-//   employeeData - array of employees (i.e., struct employee)
-//   size - the array size (i.e., number of employees)
+//   emp_ptr     - pointer to an employee struct array
+//   size        - number of employees
 //
 // Returns: void
 //
 //**************************************************************
 
-void calcOvertimeHrs (struct employee employeeData[], int size)
+void calcOvertimeHrs (struct employee * emp_ptr, int size)
 {
 	
     int i;  // array and loop index
@@ -25,14 +25,15 @@ void calcOvertimeHrs (struct employee employeeData[], int size)
     for (i = 0; i < size; ++i)
     {  
         // Any overtime ?
-        if (employeeData[i].hours >= STD_HOURS)
+        if (emp_ptr->hours >= STD_HOURS)
         {
-            employeeData[i].overtimeHrs = employeeData[i].hours - STD_HOURS;
+            emp_ptr->overtimeHrs = emp_ptr->hours - STD_HOURS;
         }
         else // no overtime
         {
-  	        employeeData[i].overtimeHrs = 0;
+  	        emp_ptr->overtimeHrs = 0;
         }
+        ++emp_ptr;
         
     } // for
 
