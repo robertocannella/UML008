@@ -9,14 +9,14 @@
 //
 // Parameters:
 //
-//   employeeData - array of employees (i.e., struct employee)
-//   size - the array size (i.e., number of employees)
+//   emp_ptr     - pointer to an employee struct array
+//   size        - number of employees
 //
 // Returns: void
 //
 //**************************************************************
 
-void calcFedTax (struct employee employeeData[], int size)
+void calcFedTax (struct employee * emp_ptr, int size)
 {
 	
     int i;  // loop and array index
@@ -25,7 +25,9 @@ void calcFedTax (struct employee employeeData[], int size)
     for (i=0; i < size; ++i)
     {
         // Fed Tax is the same for all regardless of state
-        employeeData[i].fedTax = employeeData[i].grossPay * FED_TAX_RATE;
+        emp_ptr->fedTax = emp_ptr->grossPay * FED_TAX_RATE;
+
+        ++emp_ptr;
 
     } // for
 	

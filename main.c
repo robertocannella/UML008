@@ -69,7 +69,7 @@ int main ()
     calcStateTax (emp_ptr, NUM_EMPL);
 
     // Calculate the federal tax                                                   
-    calcFedTax (emp, NUM_EMPL);
+    calcFedTax (emp_ptr, NUM_EMPL);
  
     // Calculate the net pay after taxes   
     calcNetPay (emp, NUM_EMPL);
