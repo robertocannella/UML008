@@ -107,8 +107,8 @@ struct median
 void calcEmployeeTotals (struct employee * emp_ptr,
                          struct totals * tot_ptr,
                          int size);
-struct min_max calcEmployeeMinMax (struct employee employeeData[],
-                                   struct min_max employeeMinMax,
+void calcEmployeeMinMax (struct employee * emp_ptr,
+                                   struct min_max * empMinMax_ptr,
                                    int size);
 void calcGrossPay (struct employee * emp_ptr, int size);
 void calcFedTax (struct employee * emp_ptr, int size);

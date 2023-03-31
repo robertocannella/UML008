@@ -10,17 +10,17 @@
 //
 // Parameters:
 //
-//   employeeData   - array of employees (i.e., struct employee)
-//   employeeTotals - structure containing a running totals 
-//                    of all fields above
-//   size - the array size (i.e., number of employees)
+//   emp_ptr        - pointer to an employee struct array
+//   empMinMax_ptr  - structure containing a running totals
+//                         of all fields above
+//   size           - number of employees
 //
-// Returns: employeeMinMax - updated employeeMinMax structure
+// Returns: void
 //
 //**************************************************************
 
-struct min_max calcEmployeeMinMax (struct employee employeeData[],
-                                   struct min_max employeeMinMax,
+void calcEmployeeMinMax (struct employee * emp_ptr,
+                                   struct min_max * empMinMax_ptr,
                                    int size)
 {
 
@@ -28,101 +28,100 @@ struct min_max calcEmployeeMinMax (struct employee employeeData[],
     
     // if this is the first set of data items, set 
     // them to the min and max
-    employeeMinMax.min_wageRate = employeeData[0].wageRate; 
-    employeeMinMax.min_hours = employeeData[0].hours;
-    employeeMinMax.min_overtimeHrs = employeeData[0].overtimeHrs; 
-    employeeMinMax.min_grossPay = employeeData[0].grossPay;
-    employeeMinMax.min_stateTax = employeeData[0].stateTax;
-    employeeMinMax.min_fedTax = employeeData[0].fedTax;
-    employeeMinMax.min_netPay = employeeData[0].netPay;
+    empMinMax_ptr->min_wageRate = emp_ptr->wageRate;
+    empMinMax_ptr->min_hours = emp_ptr->hours;
+    empMinMax_ptr->min_overtimeHrs = emp_ptr->overtimeHrs;
+    empMinMax_ptr->min_grossPay = emp_ptr->grossPay;
+    empMinMax_ptr->min_stateTax = emp_ptr->stateTax;
+    empMinMax_ptr->min_fedTax = emp_ptr->fedTax;
+    empMinMax_ptr->min_netPay = emp_ptr->netPay;
         
     // set the max to the first element members
-    employeeMinMax.max_wageRate = employeeData[0].wageRate; 
-    employeeMinMax.max_hours = employeeData[0].hours;
-    employeeMinMax.max_overtimeHrs = employeeData[0].overtimeHrs; 
-    employeeMinMax.max_grossPay = employeeData[0].grossPay;
-    employeeMinMax.max_stateTax = employeeData[0].stateTax;
-    employeeMinMax.max_fedTax = employeeData[0].fedTax;
-    employeeMinMax.max_netPay = employeeData[0].netPay;
+    empMinMax_ptr->max_wageRate = emp_ptr->wageRate;
+    empMinMax_ptr->max_hours = emp_ptr->hours;
+    empMinMax_ptr->max_overtimeHrs = emp_ptr->overtimeHrs;
+    empMinMax_ptr->max_grossPay = emp_ptr->grossPay;
+    empMinMax_ptr->max_stateTax = emp_ptr->stateTax;
+    empMinMax_ptr->max_fedTax = emp_ptr->fedTax;
+    empMinMax_ptr->max_netPay = emp_ptr->netPay;
 	
 	// compare the rest of the items to each other for min and max
-    for (i = 1; i < size; ++i)
+    for (i = 0; i < size; ++i)
     {
 		
         // check if current Wage Rate is the new min and/or max
-        if (employeeData[i].wageRate < employeeMinMax.min_wageRate)
+        if (emp_ptr->wageRate < empMinMax_ptr->min_wageRate)
         {
-            employeeMinMax.min_wageRate = employeeData[i].wageRate;
+            empMinMax_ptr->min_wageRate = emp_ptr->wageRate;
         }
-        if (employeeData[i].wageRate > employeeMinMax.max_wageRate)
+        if (emp_ptr->wageRate > empMinMax_ptr->max_wageRate)
         {
-            employeeMinMax.max_wageRate = employeeData[i].wageRate;
+            empMinMax_ptr->max_wageRate = emp_ptr->wageRate;
         }
 
         // check if current Gross Pay is the new min and/or max
-		if (employeeData[i].grossPay < employeeMinMax.min_grossPay)
+		if (emp_ptr->grossPay < empMinMax_ptr->min_grossPay)
         {
-            employeeMinMax.min_grossPay = employeeData[i].grossPay;
+            empMinMax_ptr->min_grossPay = emp_ptr->grossPay;
         }
-        if (employeeData[i].grossPay > employeeMinMax.max_grossPay)
+        if (emp_ptr->grossPay > empMinMax_ptr->max_grossPay)
         {
-            employeeMinMax.max_grossPay = employeeData[i].grossPay;
+            empMinMax_ptr->max_grossPay = emp_ptr->grossPay;
         }
 
         // check if current Hours is the new min and/or max
-        if (employeeData[i].hours < employeeMinMax.min_hours)
+        if (emp_ptr->hours < empMinMax_ptr->min_hours)
         {
-            employeeMinMax.min_hours = employeeData[i].hours;
+            empMinMax_ptr->min_hours = emp_ptr->hours;
         }
-        if (employeeData[i].hours > employeeMinMax.max_hours)
+        if (emp_ptr->hours > empMinMax_ptr->max_hours)
         {
-            employeeMinMax.max_hours = employeeData[i].hours;
+            empMinMax_ptr->max_hours = emp_ptr->hours;
         }
 
         // check if current Overtime Hours is the new min and/or max
-        if (employeeData[i].overtimeHrs < employeeMinMax.min_overtimeHrs)
+        if (emp_ptr->overtimeHrs < empMinMax_ptr->min_overtimeHrs)
         {
-            employeeMinMax.min_overtimeHrs = employeeData[i].overtimeHrs;
+            empMinMax_ptr->min_overtimeHrs = emp_ptr->overtimeHrs;
         }
-        if (employeeData[i].overtimeHrs > employeeMinMax.max_overtimeHrs)
+        if (emp_ptr->overtimeHrs > empMinMax_ptr->max_overtimeHrs)
         {
-            employeeMinMax.max_overtimeHrs = employeeData[i].overtimeHrs;
+            empMinMax_ptr->max_overtimeHrs = emp_ptr->overtimeHrs;
         }
 
         // check if current State Tax is the new min and/or max
-        if (employeeData[i].stateTax < employeeMinMax.min_stateTax)
+        if (emp_ptr->stateTax < empMinMax_ptr->min_stateTax)
         {
-            employeeMinMax.min_stateTax = employeeData[i].stateTax;
+            empMinMax_ptr->min_stateTax = emp_ptr->stateTax;
         }
-        if (employeeData[i].stateTax > employeeMinMax.max_stateTax)
+        if (emp_ptr->stateTax > empMinMax_ptr->max_stateTax)
         {
-            employeeMinMax.max_stateTax = employeeData[i].stateTax;
+            empMinMax_ptr->max_stateTax = emp_ptr->stateTax;
         }
 
         // check if current Fed Tax is the new min and/or max
-        if (employeeData[i].fedTax < employeeMinMax.min_fedTax)
+        if (emp_ptr->fedTax < empMinMax_ptr->min_fedTax)
         {
-            employeeMinMax.min_fedTax = employeeData[i].fedTax;
+            empMinMax_ptr->min_fedTax = emp_ptr->fedTax;
         }
-        if (employeeData[i].fedTax > employeeMinMax.max_fedTax)
+        if (emp_ptr->fedTax > empMinMax_ptr->max_fedTax)
         {
-            employeeMinMax.max_fedTax = employeeData[i].fedTax;
+            empMinMax_ptr->max_fedTax = emp_ptr->fedTax;
         }
 
         // check if current Net Pay is the new min and/or max
-        if (employeeData[i].netPay < employeeMinMax.min_netPay)
+        if (emp_ptr->netPay < empMinMax_ptr->min_netPay)
         {
-            employeeMinMax.min_netPay = employeeData[i].netPay;
+            empMinMax_ptr->min_netPay = emp_ptr->netPay;
         }
-        if (employeeData[i].netPay > employeeMinMax.max_netPay)
+        if (emp_ptr->netPay > empMinMax_ptr->max_netPay)
         {
-            employeeMinMax.max_netPay = employeeData[i].netPay;
+            empMinMax_ptr->max_netPay = emp_ptr->netPay;
         }
 
+        ++emp_ptr;
 		
     } // else if
-    
-    // return all the updated min and max values to the calling function
-    return (employeeMinMax);
+
 	
 } // calcEmployeeMinMax
