@@ -5,7 +5,7 @@
 #include "employee.h"
 
 void calcSD(struct employee * emp_ptr, struct std_dev * empStdDev_ptr, int size);
-struct median getMedian(struct employee employeeData[], struct median structMedian, int size);
+void calcMedian(struct employee * emp_ptr , struct median * empMed_ptr, int size);
 float calculateSD(float data[], int size);
 float calculateMedian(float data[],int size);
 void sort(float a[],int n);

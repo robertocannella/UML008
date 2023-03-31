@@ -1,70 +1,82 @@
 //*************************************************************
-// Function: getMedian
+// Function: calcMedian
 //
 // Purpose: Calculate the median of various inputs. Populates
 //          a median struct using the stored employee data
 //
 // Parameters:
 //
-//   employeeData   - array of employees (i.e., struct employee)
-//   median         - struct which stores various median values
-//   size           - the array size (i.e., number of employees)
+//   emp_ptr     - pointer to an employee struct array
+//   size        - number of employees
+//   empMed_ptr  - pointer to median struct
 //
-// Returns: median  - a struct containing the calculated median values
+// Returns: void
 //
 //**************************************************************
 #include <printf.h>
 #include "statistics.h"
 #include "math.h"
 
-struct median getMedian(struct employee employeeData[], struct median median, int size) {
+void calcMedian(struct employee * emp_ptr, struct median * empMed_ptr, int size) {
 
-    float total[5];
+    float total[size];
     int i;
 
     // Calculate median for net pay
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].netPay;
+        total[i] = emp_ptr->netPay;
+        ++emp_ptr;
     }
-    median.median_netPay =  calculateMedian(total, size);
+    empMed_ptr->median_netPay =  calculateMedian(total, size);
 
+    emp_ptr -= size;
     // Calculate median for federal tax
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].fedTax;
+        total[i] = emp_ptr->fedTax;
+        ++emp_ptr;
     }
-    median.median_fedTax =  calculateMedian(total, size);
+    empMed_ptr->median_fedTax =  calculateMedian(total, size);
 
+    emp_ptr -= size;
     // Calculate median for state tax
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].stateTax;
+        total[i] = emp_ptr->stateTax;
+        ++emp_ptr;
     }
-    median.median_stateTax =  calculateMedian(total, size);
+    empMed_ptr->median_stateTax =  calculateMedian(total, size);
 
+    emp_ptr -= size;
     // Calculate median for gross pay
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].grossPay;
+        total[i] = emp_ptr->grossPay;
+        ++emp_ptr;
     }
-    median.median_grossPay =  calculateMedian(total, size);
+    empMed_ptr->median_grossPay =  calculateMedian(total, size);
 
+    emp_ptr -= size;
     // Calculate median for overtime hours
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].overtimeHrs;
+        total[i] = emp_ptr->overtimeHrs;
+        ++emp_ptr;
     }
-    median.median_overtimeHrs =  calculateMedian(total, size);
+    empMed_ptr->median_overtimeHrs =  calculateMedian(total, size);
 
+    emp_ptr -= size;
     // Calculate median for hours
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].hours;
+        total[i] = emp_ptr->hours;
+        ++emp_ptr;
     }
-    median.median_hours =  calculateMedian(total, size);
+    empMed_ptr->median_hours =  calculateMedian(total, size);
 
+    emp_ptr -= size;
     // Calculate median of wages
     for (i = 0; i < size; ++i) {
-        total[i] = employeeData[i].wageRate;
+        total[i] = emp_ptr->wageRate;
+        ++emp_ptr;
     }
-    median.median_wageRate =  calculateMedian(total, size);
+    empMed_ptr->median_wageRate =  calculateMedian(total, size);
 
-    return median;
 }
 //*************************************************************
 // Function: calcSD

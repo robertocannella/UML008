@@ -58,6 +58,9 @@ int main ()
 
     // set up structure to store median values and initialize all to zero
     struct median employeeMedian = {0,0,0,0,0,0,0};
+    struct median * empMed_ptr;
+    empMed_ptr = &employeeMedian;
+
 
     // Call functions as needed to read and calculate information
 
@@ -92,7 +95,7 @@ int main ()
 
     // Keep a running update of the standard deviation totals
     // Note:  This remains a Call by Value design
-    employeeMedian = getMedian(emp, employeeMedian, NUM_EMPL);
+    calcMedian(emp_ptr, empMed_ptr, NUM_EMPL);
 
     // Print the column headers
     printHeader();
