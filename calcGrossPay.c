@@ -17,7 +17,7 @@
 //
 //**************************************************************
 
-void calcGrossPay (struct employee employeeData[], int size)
+void calcGrossPay (struct employee * emp_ptr, int size)
 {
     int i;                // loop and array index
     float theNormalPay;   // normal pay without any overtime hours
@@ -27,13 +27,15 @@ void calcGrossPay (struct employee employeeData[], int size)
     for (i=0; i < size; ++i)
     {
         // calculate normal pay and any overtime pay
-        theNormalPay = employeeData[i].wageRate * 
-                       (employeeData[i].hours - employeeData[i].overtimeHrs);
-        theOvertimePay = employeeData[i].overtimeHrs * 
-                         (OT_RATE * employeeData[i].wageRate);
+        theNormalPay = emp_ptr->wageRate *
+                       (emp_ptr->hours - emp_ptr->overtimeHrs);
+        theOvertimePay = emp_ptr->overtimeHrs *
+                         (OT_RATE * emp_ptr->wageRate);
   
         // calculate gross pay for employee as normalPay + any overtime pay
-        employeeData[i].grossPay = theNormalPay + theOvertimePay;
+        emp_ptr->grossPay = theNormalPay + theOvertimePay;
+
+        ++emp_ptr;
     }
 
 } // calcGrossPay

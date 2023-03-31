@@ -106,7 +106,7 @@ struct median
 // define prototypes here for each function except main
 void getHours (struct employee * emp_ptr, int size);
 void calcOvertimeHrs (struct employee * emp_ptr, int size);
-void calcGrossPay (struct employee employeeData[], int size);
+void calcGrossPay (struct employee * emp_ptr, int size);
 void printHeader (void);
 void printEmp (struct employee employeeData[], int size);
 void calcStateTax (struct employee employeeData[], int size);

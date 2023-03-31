@@ -63,7 +63,7 @@ int main ()
     calcOvertimeHrs (emp_ptr, NUM_EMPL);
        
     // Calculate the weekly gross pay
-    calcGrossPay (emp, NUM_EMPL);
+    calcGrossPay (emp_ptr, NUM_EMPL);
 
     // Calculate the state tax                                       
     calcStateTax (emp, NUM_EMPL);
