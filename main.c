@@ -26,8 +26,13 @@
 
 int main ()
 {
-    
-    // Set up a local variable to store the employee information
+    /*******************************************************************
+     *
+     *  Set up a local variable to store the employee information
+     *      and calculations.
+     *
+     */
+
     // Initialize the name, tax state, clock number, and wage rate
     struct employee emp[NUM_EMPL] = {
         { {"Connie", "Cobol"}, "MA", 98401, 10.60},
@@ -36,33 +41,37 @@ int main ()
         { {"Jeff", "Ada"}, "NY", 34645, 12.25 },
         { {"Anton", "Pascal"},"CA",127615, 8.35 }
     };
-    struct employee * emp_ptr;      /* pointer to an employee structure */
-    emp_ptr = emp;                  /* point to beginning of emp array */
+    struct employee * emp_ptr;          /* pointer to an employee structure */
+    emp_ptr = emp;                      /* point to beginning of emp array */
 
     // set up structure to store totals and initialize all to zero
     struct totals tot  = {0,0,0,0,0,0,0};
-    struct totals * tot_ptr;        /* pointer to a totals structure */
-    tot_ptr = &tot;                 /* point to beginning of totals structure */
+    struct totals * tot_ptr;            /* pointer to a totals structure */
+    tot_ptr = &tot;                     /* point to beginning of totals structure */
 
 
     // set up structure to store min and max values and initialize all to zero
     struct min_max employeeMinMax = {0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    struct min_max * empMinMax_ptr;
-    empMinMax_ptr = &employeeMinMax;
+    struct min_max * empMinMax_ptr;      /* pointer to a min_max structure */
+    empMinMax_ptr = &employeeMinMax;     /* point to beginning of min_max structure */
 
     // set up structure to store standard deviation values and initialize all to zero
     struct std_dev employeeStdDev = {0,0,0,0,0,0,0};
-    struct std_dev * empStdDev_ptr;
-    empStdDev_ptr = &employeeStdDev;
+    struct std_dev * empStdDev_ptr;     /* pointer to a std_dev structure */
+    empStdDev_ptr = &employeeStdDev;    /* point to beginning of std_dev structure */
 
 
     // set up structure to store median values and initialize all to zero
     struct median employeeMedian = {0,0,0,0,0,0,0};
-    struct median * empMed_ptr;
-    empMed_ptr = &employeeMedian;
+    struct median * empMed_ptr;         /* pointer to a median structure */
+    empMed_ptr = &employeeMedian;       /* point to beginning of median structure */
 
 
-    // Call functions as needed to read and calculate information
+    /*******************************************************************
+     *
+     * Call functions as needed to read and calculate information
+     *
+     */
 
     // Prompt for the number of hours worked by the employee
     getHours (emp_ptr, NUM_EMPL);
@@ -86,16 +95,19 @@ int main ()
     calcEmployeeTotals (emp_ptr, tot_ptr, NUM_EMPL);
                                              
     // Keep a running update of the employee minimum and maximum values
-    // Note:  This remains a Call by Value design
     calcEmployeeMinMax (emp_ptr,empMinMax_ptr,NUM_EMPL);
 
     // Keep a running update of the standard deviation totals
-    // Note:  This remains a Call by Value design
     calcSD(emp_ptr, empStdDev_ptr, NUM_EMPL);
 
     // Keep a running update of the standard deviation totals
-    // Note:  This remains a Call by Value design
     calcMedian(emp_ptr, empMed_ptr, NUM_EMPL);
+
+    /*******************************************************************
+     *
+     * Print to report to scree
+     *
+     */
 
     // Print the column headers
     printHeader();
